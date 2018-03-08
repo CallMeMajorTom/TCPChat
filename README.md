@@ -16,18 +16,18 @@
 
 #### Failure model ####
 
-Failure | Solution  
-- | -
-The server shut down suddenly | Stop the socket and inform clients
-The client leave the chat in an abnormal way (Power off, Shut down the chat GUI) | Shutdown the clientconnection thread and remove it from the connection list
-The client will block in the read forever if no data arrives| Use setSotimeout() method and set reasonable timeout, when reach this timeout, SocketTimeoutException will be thrown 
-The client send wrong command | Inform the client with "Error:This is a wrong command"
-The client send wrong parameter in /help command | Inform the client with "Error:There is no such command"
-The client send wrong parameter in /tell command | Inform the client with "Error:There is no *name*"
-The client send wrong parameter in /kick command | Inform the client with "Error:There is no *name*"
-The client who is not administrator wants to kick someone | Inform the client with "Error:Rejected(Don't have right)"
-The packet loss over a connection passes some limit | Cannot handle
-The network problem | Cannot handle
+| Failure                                                      | Solution                                                     |
+| ------------------------------------------------------------ | :----------------------------------------------------------- |
+|The server shut down suddenly | Stop the socket and inform clients|
+|The client leave the chat in an abnormal way (Power off, Shut down the chat GUI) | Shutdown the clientconnection thread and remove it from the connection list|
+|The client will block in the read forever if no data arrives| Use setSotimeout() method and set reasonable timeout, when reach this timeout, SocketTimeoutException will be thrown |
+|The client send wrong command | Inform the client with "Error:This is a wrong command"|
+|The client send wrong parameter in /help command | Inform the client with "Error:There is no such command"|
+|The client send wrong parameter in /tell command | Inform the client with "Error:There is no *name*"|
+|The client send wrong parameter in /kick command | Inform the client with "Error:There is no *name*"|
+|The client who is not administrator wants to kick someone | Inform the client with "Error:Rejected(Don't have right)"|
+|The packet loss over a connection passes some limit | Cannot handle|
+|The network problem | Cannot handle|
 
 #### Comparison with UDP ###
 - In TCP, a pair of communicating processes establish a connection before they can communicate over a stream. Once a connection is established, the processes simply read from and write to the stream without needing to use Internet addresses and ports. While in UDP, every time you send a instance of DataGramPacket which is an array of bytes comprising a message, the length of the message and the Internet address and local port number of the destination socket.
